@@ -13,13 +13,13 @@ jobs:
       with:
         # curl arguments
         curl: https://packagecontrol.io/channel_v3.json -o channel_v3.json
-    - name: Add & Commit
-      uses: EndBug/add-and-commit@v3.0.0
-      with:
-        message: "update"
-        path: channel_v3.json
-    - name: GitHub Push
-      uses: ad-m/github-push-action@v0.5.0
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "update channel" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
     
