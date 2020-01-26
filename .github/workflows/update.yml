@@ -15,17 +15,10 @@ jobs:
         curl: https://packagecontrol.io/channel_v3.json -o channel_v3.json
     - name: Commit files
       run: |
+        git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+        git pull github ${GITHUB_REF} --ff-only
         git add channel_v3.json
-    - name: Git Commit on Workflow
-      uses: matheusalbino/git-commit@v1.0.1
-      with:
-        # Github Token
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        # Git message
-        message: "update channel_v3"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        git commit -m "Update channel_v3"
+        git push github HEAD:${GITHUB_REF}
     
     
