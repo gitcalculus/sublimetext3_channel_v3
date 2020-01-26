@@ -12,9 +12,9 @@ jobs:
       run: |
         ls -la
         git clone https://github.com/$GITHUB_REPOSITORY.git
+        cd sublimetext3_channel_v3
         git config --local user.name ${GITHUB_ACTOR}
         git config --local user.mail ${GITHUB_ACTOR}@github_action.com
-        cd sublimetext3_channel_v3
         curl https://packagecontrol.io/channel_v3.json -o channel_v3.json
         git config --local 
         git add -A
