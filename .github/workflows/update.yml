@@ -11,10 +11,6 @@ jobs:
     - name: log
       run: |
         ls -la
-        git clone https://github.com/$GITHUB_REPOSITORY.git
-        cd sublimetext3_channel_v3
-        git config --local user.name "xdravens"
-        git config --local user.mail "xdravens@hotmail.com"
         curl https://packagecontrol.io/channel_v3.json -o channel_v3.json
         git add -A
         git commit -m "update channel_v3"
