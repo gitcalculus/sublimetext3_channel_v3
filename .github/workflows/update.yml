@@ -15,6 +15,8 @@ jobs:
         git clone https://github.com/$GITHUB_REPOSITORY.git
         ls -la
         cd sublimetext3_channel_v3
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         curl https://packagecontrol.io/channel_v3.json -o channel_v3.json
         git add channel_v3.json
         git commit -m "Update channel_v3"
