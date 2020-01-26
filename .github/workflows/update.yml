@@ -13,6 +13,9 @@ jobs:
       with:
         # curl arguments
         curl: https://packagecontrol.io/channel_v3.json -o channel_v3.json
+    - name: log
+      run: |
+        ls -la
     - name: Commit files
       run: |
         git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
