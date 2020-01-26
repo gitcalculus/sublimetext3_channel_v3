@@ -8,20 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: CURL-ACTION
-      uses: enflo/curl-action@v1.2
-      with:
-        # curl arguments
-        curl: https://packagecontrol.io/channel_v3.json -o channel_v3.json
     - name: log
       run: |
         ls -la
         echo ${GITHUB_REPOSITORY}
         git clone https://github.com/$GITHUB_REPOSITORY.git
+    - name: CURL-ACTION
+      uses: enflo/curl-action@v1.2
+      with:
+        # curl arguments
+        curl: https://packagecontrol.io/channel_v3.json -o channel_v3.json
     - name: Commit files
       run: |
-        git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-        git pull github ${GITHUB_REF} --ff-only
         git add channel_v3.json
         git commit -m "Update channel_v3"
         git push github HEAD:${GITHUB_REF}
