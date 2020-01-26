@@ -13,9 +13,9 @@ jobs:
         ls -la
         echo ${GITHUB_REPOSITORY}
         git clone https://github.com/$GITHUB_REPOSITORY.git
-        curl https://packagecontrol.io/channel_v3.json -o channel_v3.json
         ls -la
         cd sublimetext3_channel_v3
+        curl https://packagecontrol.io/channel_v3.json -o channel_v3.json
         git add channel_v3.json
         git commit -m "Update channel_v3"
         git push github HEAD:${GITHUB_REF}
