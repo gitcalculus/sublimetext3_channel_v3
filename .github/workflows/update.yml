@@ -11,12 +11,9 @@ jobs:
     - name: log
       run: |
         ls -la
+        git clone https://github.com/$GITHUB_REPOSITORY.git
+        cd sublimetext3_channel_v3
         curl https://packagecontrol.io/channel_v3.json -o channel_v3.json
         ls -la
-    - name: Action Release
-      uses: yakuhzi/action-release@v1.2.0
-      with:
-        # File to upload to the release
-        file: channel_v3.json
     
     
