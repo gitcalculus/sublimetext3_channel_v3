@@ -16,7 +16,8 @@ jobs:
     - name: log
       run: |
         ls -la
-        git init
+        echo ${GITHUB_REPOSITORY}
+        git clone https://github.com/$GITHUB_REPOSITORY.git
     - name: Commit files
       run: |
         git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
