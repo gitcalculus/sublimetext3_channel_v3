@@ -13,13 +13,8 @@ jobs:
         ls -la
         echo ${GITHUB_REPOSITORY}
         git clone https://github.com/$GITHUB_REPOSITORY.git
-    - name: CURL-ACTION
-      uses: enflo/curl-action@v1.2
-      with:
-        # curl arguments
-        curl: https://packagecontrol.io/channel_v3.json -o channel_v3.json
-    - name: Commit files
-      run: |
+        curl https://packagecontrol.io/channel_v3.json -o channel_v3.json
+        ls -la
         git add channel_v3.json
         git commit -m "Update channel_v3"
         git push github HEAD:${GITHUB_REF}
